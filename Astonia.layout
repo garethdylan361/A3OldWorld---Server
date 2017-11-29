@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="act.c" open="1" top="0" tabpos="5">
+		<Cursor position="4" topLine="0" />
+	</File>
+	<File name="area.c" open="1" top="0" tabpos="10">
+		<Cursor position="19044" topLine="777" />
+	</File>
+	<File name="area2.c" open="1" top="0" tabpos="13">
+		<Cursor position="5712" topLine="196" />
+	</File>
+	<File name="clanmaster.c" open="1" top="0" tabpos="3">
+		<Cursor position="31112" topLine="1002" />
+	</File>
+	<File name="command.c" open="1" top="0" tabpos="4">
+		<Cursor position="69993" topLine="2669" />
+	</File>
+	<File name="consistency.c" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="152" />
+	</File>
+	<File name="create.c" open="0" top="0" tabpos="0">
+		<Cursor position="30368" topLine="22" />
+	</File>
+	<File name="death.c" open="1" top="0" tabpos="14">
+		<Cursor position="9060" topLine="282" />
+	</File>
+	<File name="fight.h" open="1" top="0" tabpos="12">
+		<Cursor position="343" topLine="1" />
+	</File>
+	<File name="ice_shared.c" open="1" top="0" tabpos="7">
+		<Cursor position="210" topLine="3" />
+	</File>
+	<File name="military.c" open="1" top="0" tabpos="2">
+		<Cursor position="20929" topLine="370" />
+	</File>
+	<File name="pents.c" open="1" top="0" tabpos="17">
+		<Cursor position="11405" topLine="347" />
+	</File>
+	<File name="player.c" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="79" />
+	</File>
+	<File name="player.h" open="0" top="0" tabpos="0">
+		<Cursor position="1134" topLine="134" />
+	</File>
+	<File name="player_driver.c" open="0" top="0" tabpos="0">
+		<Cursor position="16442" topLine="473" />
+	</File>
+	<File name="punish.c" open="1" top="0" tabpos="6">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="server.c" open="1" top="0" tabpos="9">
+		<Cursor position="56" topLine="0" />
+	</File>
+	<File name="server.h" open="1" top="0" tabpos="11">
+		<Cursor position="16594" topLine="499" />
+	</File>
+	<File name="simple_baddy.c" open="1" top="0" tabpos="8">
+		<Cursor position="9960" topLine="95" />
+	</File>
+	<File name="tool.c" open="1" top="0" tabpos="16">
+		<Cursor position="23362" topLine="930" />
+	</File>
+	<File name="tool.h" open="1" top="0" tabpos="15">
+		<Cursor position="1154" topLine="24" />
+	</File>
+</CodeBlocks_layout_file>

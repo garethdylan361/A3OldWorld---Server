@@ -1,0 +1,91 @@
+guild_door1:            # thieves guild master
+sprite=20038
+#sprite=20040
+flag=IF_MOVEBLOCK
+flag=IF_SIGHTBLOCK
+flag=IF_SOUNDBLOCK
+flag=IF_USE
+flag=IF_DOOR
+driver=2
+arg="001600000100"      # developer 1, ID 22, auto-close
+;
+
+guild_key1:
+name="Guild-Key-1"
+description="The key to Thieves Guild Master's quarters in Cameron."
+value=25
+sprite=50004
+ID=01000016             # developer 1, ID 22
+flag=IF_TAKE
+flag=IF_QUEST
+;
+
+guild_chest15:
+name="Chest"
+description="A wooden chest with iron bands."
+sprite=20088
+flag=IF_USE
+flag=IF_MOVEBLOCK
+driver=5
+arg="0F16000001A800"        # chest 15, devel 1, ID 22, 1 week respawn time
+;
+treasure_15:
+name="Pile of Coins"
+description="A small pile of coins."
+sprite=105
+flag=IF_TAKE
+flag=IF_MONEY
+value=1300
+;
+
+guild_chest16:
+name="Chest"
+description="A wooden chest with iron bands."
+sprite=20088
+flag=IF_USE
+flag=IF_MOVEBLOCK
+driver=5
+arg="1016000001A800"        # chest 16, devel 1, ID 22, 1 week respawn time
+;
+treasure_16:
+name="Sleeves"
+description="Light chain mail sleeves made of mithril."
+value=125
+sprite=10120
+mod_index=V_ARMOR
+mod_value=42
+mod_index=V_ATTACK
+mod_value=1
+mod_index=V_PARRY
+mod_value=1
+mod_index=V_IMMUNITY
+mod_value=1
+req_index=V_ARMORSKILL
+req_value=1
+flag=IF_TAKE
+flag=IF_WNARMS
+;
+
+guild_chest17:
+name="Chest"
+description="A wooden chest with iron bands."
+sprite=20088
+flag=IF_USE
+flag=IF_MOVEBLOCK
+driver=5
+arg="1116000001A800"        # chest 17, devel 1, ID 22, 1 week respawn time
+;
+treasure_17:
+name="Vest"
+description="A vest made of leather"
+value=10
+mod_index=V_FLASH
+mod_value=1
+mod_index=V_MAGICSHIELD
+mod_value=1
+mod_index=V_IMMUNITY
+mod_value=1
+sprite=50512
+flag=IF_TAKE
+flag=IF_WNBODY
+;

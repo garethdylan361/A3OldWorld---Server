@@ -1,0 +1,12 @@
+*.log
+*.elog
+*.ilog
+**/bin
+**/client
+**/cmake-build-debug
+**/home
+**/k
+**/obj
+**/quest
+**/untitled folder
+*MYSQLPASS

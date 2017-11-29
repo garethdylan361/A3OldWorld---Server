@@ -1,0 +1,11 @@
+Greetings, welcome to the land of Astonia!
+
+Clan Spawners should be good to go now for non clan players.
+Things to come:
+- Dual multi client
+- Spawn times command
+- No hints command
+- Jobbington fixes
+- Fixed missions
+- CvC, PvP arena events
+- And more...

@@ -1,0 +1,128 @@
+skel_door:
+sprite=20038
+#sprite=20040
+flag=IF_MOVEBLOCK
+flag=IF_SIGHTBLOCK
+flag=IF_SOUNDBLOCK
+flag=IF_USE
+flag=IF_DOOR
+driver=2
+arg="0002000001"        # developer 1, ID 2
+;
+
+skel_key:
+name="Skel-Key-1"
+description="Key 1 from the skeleton place."
+value=25
+sprite=50004
+ID=01000002             # developer 1, ID 2
+flag=IF_TAKE
+flag=IF_QUEST
+;
+
+skel_door2:
+sprite=20038
+#sprite=20040
+flag=IF_MOVEBLOCK
+flag=IF_SIGHTBLOCK
+flag=IF_SOUNDBLOCK
+flag=IF_USE
+flag=IF_DOOR
+driver=2
+arg="0003000001"        # developer 1, ID 3
+;
+
+skel_key2:
+name="Skel-Key-2"
+description="Key 2 from the skeleton place."
+value=25
+sprite=50005
+ID=01000003             # developer 1, ID 3
+flag=IF_TAKE
+flag=IF_QUEST
+;
+
+skel_door3:
+sprite=20040
+flag=IF_MOVEBLOCK
+flag=IF_SIGHTBLOCK
+flag=IF_SOUNDBLOCK
+flag=IF_USE
+flag=IF_DOOR
+driver=2
+arg="0004000001"        # developer 1, ID 4
+;
+
+skel_key3:
+name="Skel-Key-3"
+description="Key 3 from the skeleton place."
+value=25
+sprite=50006
+ID=01000004             # developer 1, ID 4
+flag=IF_TAKE
+flag=IF_QUEST
+;
+
+skel_skull:
+name="Skull"
+description="A magical skull from the skeleton place."
+value=25
+sprite=50007
+ID=01000005             # developer 1, ID 5
+flag=IF_TAKE
+flag=IF_QUEST
+;
+
+skel_chest0:
+name="Chest"
+description="A wooden chest with iron bands."
+sprite=20088
+flag=IF_USE
+flag=IF_MOVEBLOCK
+driver=5
+arg="00000000001800"    # nr 0, no key, 1 day respawn time
+;
+treasure_0:
+name="Armor"
+description="Light chain mail armor made of mithril."
+value=250
+sprite=10140
+mod_index=V_ARMOR
+mod_value=140
+mod_index=V_TACTICS
+mod_value=1
+mod_index=V_WARCRY
+mod_value=1
+mod_index=V_BODYCONTROL
+mod_value=1
+req_index=V_ARMORSKILL
+req_value=1
+flag=IF_TAKE
+flag=IF_WNBODY
+;
+
+skel_chest3:
+name="Chest"
+description="A wooden chest with iron bands."
+sprite=20088
+flag=IF_USE
+flag=IF_MOVEBLOCK
+driver=5
+arg="03000000001800"    # nr 3, no key, 1 day respawn time
+;
+treasure_3:
+name="A Pair of Trousers"
+description="A pair of trousers made of leather"
+value=10
+mod_index=V_WIS
+mod_value=1
+mod_index=V_INT
+mod_value=1
+mod_index=V_AGI
+mod_value=1
+sprite=50513
+flag=IF_TAKE
+flag=IF_WNLEGS
+;
+
+

@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Astonia" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="bin/Release/Astonia" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="act.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="act.h" />
+		<Unit filename="alchemy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="area.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="area.h" />
+		<Unit filename="area1.h" />
+		<Unit filename="area2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="area3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="area3.h" />
+		<Unit filename="arena.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="arkhata.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="arkhata.h" />
+		<Unit filename="badip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="badip.h" />
+		<Unit filename="balance.h" />
+		<Unit filename="bank.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bank.h" />
+		<Unit filename="base.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="book.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="book.h" />
+		<Unit filename="btrace.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="btrace.h" />
+		<Unit filename="caligar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="chat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="chat.h" />
+		<Unit filename="chatserver.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="clan.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="clan.h" />
+		<Unit filename="clanlog.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="clanlog.h" />
+		<Unit filename="clanmaster.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="client.h" />
+		<Unit filename="club.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="club.h" />
+		<Unit filename="clubmaster.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="command.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="command.h" />
+		<Unit filename="consistency.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="consistency.h" />
+		<Unit filename="container.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="container.h" />
+		<Unit filename="create.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="create.h" />
+		<Unit filename="create_account.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="create_armor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="create_character.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="create_weapons.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="database.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="database.h" />
+		<Unit filename="date.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="date.h" />
+		<Unit filename="death.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="death.h" />
+		<Unit filename="depot.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="depot.h" />
+		<Unit filename="direction.h" />
+		<Unit filename="do.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="do.h" />
+		<Unit filename="drdata.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="drdata.h" />
+		<Unit filename="drvlib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="drvlib.h" />
+		<Unit filename="dungeon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dungeon_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="edemon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="effect.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="effect.h" />
+		<Unit filename="error.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="error.h" />
+		<Unit filename="expire.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="expire.h" />
+		<Unit filename="fdemon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fight.h" />
+		<Unit filename="flower_ppd.h" />
+		<Unit filename="forest.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="gatekeeper.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="gwendylon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ice.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ice_shared.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ignore.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ignore.h" />
+		<Unit filename="io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="io.h" />
+		<Unit filename="item_id.h" />
+		<Unit filename="lab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lab.h" />
+		<Unit filename="lab1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lab2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lab3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lab4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lab5.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="libload.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="libload.h" />
+		<Unit filename="light.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="light.h" />
+		<Unit filename="log.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="log.h" />
+		<Unit filename="lookup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lookup.h" />
+		<Unit filename="los.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="los.h" />
+		<Unit filename="lostcon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lostcon.h" />
+		<Unit filename="lq.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mail.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mail.h" />
+		<Unit filename="map.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="map.h" />
+		<Unit filename="mem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mem.h" />
+		<Unit filename="merchant.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="military.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="military.h" />
+		<Unit filename="mine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="misc_ppd.h" />
+		<Unit filename="mission_ppd.h" />
+		<Unit filename="missions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="motd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="motd.h" />
+		<Unit filename="nomad.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="nomad_ppd.h" />
+		<Unit filename="notify.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="notify.h" />
+		<Unit filename="palace.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="path.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="path.h" />
+		<Unit filename="pents.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="player.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="player.h" />
+		<Unit filename="player_driver.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="player_driver.h" />
+		<Unit filename="poison.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="poison.h" />
+		<Unit filename="prof.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="prof.h" />
+		<Unit filename="professor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="punish.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="punish.h" />
+		<Unit filename="quest_exp.h" />
+		<Unit filename="questlog.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="questlog.h" />
+		<Unit filename="random.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="rdtsc.S" />
+		<Unit filename="respawn.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="respawn.h" />
+		<Unit filename="saltmine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sector.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sector.h" />
+		<Unit filename="see.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="see.h" />
+		<Unit filename="server.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="server.h" />
+		<Unit filename="sewers.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shrike.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shrine.h" />
+		<Unit filename="sidestory.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="simple_baddy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="skill.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="skill.h" />
+		<Unit filename="sleep.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sleep.h" />
+		<Unit filename="spell.h" />
+		<Unit filename="staffer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="staffer2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="staffer3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="staffer_ppd.h" />
+		<Unit filename="statistics.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="statistics.h" />
+		<Unit filename="store.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="store.h" />
+		<Unit filename="strategy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="swamp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="swear.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="swear.h" />
+		<Unit filename="talk.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="talk.h" />
+		<Unit filename="task.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="task.h" />
+		<Unit filename="tell.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tell.h" />
+		<Unit filename="teufel.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="teufel_pk.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="teufel_pk.h" />
+		<Unit filename="timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="timer.h" />
+		<Unit filename="tool.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tool.h" />
+		<Unit filename="transport.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="transport.h" />
+		<Unit filename="tunnel.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="two.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="two_ppd.h" />
+		<Unit filename="update_server.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="warped.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="warrmines.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
