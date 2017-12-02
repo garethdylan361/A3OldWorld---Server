@@ -101,23 +101,23 @@ struct qa
 };
 
 struct qa qa[]={
-	{{"how","are","you",NULL},"I'm fine!",0},
-	{{"hello",NULL},"Hello, %s!",0},
-	{{"hi",NULL},"Hi, %s!",0},
-	{{"greetings",NULL},"Greetings, %s!",0},
-	{{"hail",NULL},"And hail to you, %s!",0},
-	{{"help",NULL},"Sorry, I'm just a merchant, %s!",0},
-	{{"what's","up",NULL},"Everything that isn't nailed down.",0},
-	{{"what","is","up",NULL},"Everything that isn't nailed down.",0},
-        {{"what's","your","name",NULL},NULL,1},
-	{{"what","is","your","name",NULL},NULL,1},
-        {{"who","are","you",NULL},NULL,1},
-	{{"clan",NULL},"If you wish to found a clan, tell me the name you want that clan to have, and hand me a Clan Jewel. If you wish to tell me the name, use: 'name: <clan name>', that is, to name your clan 'Black Rose', use: 'name: Black Rose'. Be aware that the game will use the phrase 'The <clan name> clan', ie. 'The Black Rose Clan', so avoid 'The' and 'Clan' in the name.",0},
-	{{"jewels",NULL},NULL,2},
-	{{"repeat",NULL},NULL,3},
-	{{"raid",NULL},"I will enter the clan you name, kill any guards I see and try to steal a clan jewel. If I succeed I will transfer that jewel to your clan vault. I can only attack a clan if you are at war with that clan. If you want me to attack clan 2, say 'attack 2'.",0},
-	{{"scout",NULL},"On a scouting mission, I will just take a peek into the clan you name and give you a report about its guards. Say 'sneak 2' if you want me to scout clan number 2.",0},
-	{{"info",NULL},NULL,4}
+		{{"how","are","you",NULL},"I'm fine!",0},
+		{{"hello",NULL},"Hello, %s!",0},
+		{{"hi",NULL},"Hi, %s!",0},
+		{{"greetings",NULL},"Greetings, %s!",0},
+		{{"hail",NULL},"And hail to you, %s!",0},
+		{{"help",NULL},"Sorry, I'm just a merchant, %s!",0},
+		{{"what's","up",NULL},"Everything that isn't nailed down.",0},
+		{{"what","is","up",NULL},"Everything that isn't nailed down.",0},
+		{{"what's","your","name",NULL},NULL,1},
+		{{"what","is","your","name",NULL},NULL,1},
+		{{"who","are","you",NULL},NULL,1},
+		{{"clan",NULL},"If you wish to found a clan, tell me the name you want that clan to have, and hand me a Clan Jewel. If you wish to tell me the name, use: 'name: <clan name>', that is, to name your clan 'Black Rose', use: 'name: Black Rose'. Be aware that the game will use the phrase 'The <clan name> clan', ie. 'The Black Rose Clan', so avoid 'The' and 'Clan' in the name.",0},
+		{{"jewels",NULL},NULL,2},
+		{{"repeat",NULL},NULL,3},
+		{{"raid",NULL},"I will enter the clan you name, kill any guards I see and try to steal a clan jewel. If I succeed I will transfer that jewel to your clan vault. I can only attack a clan if you are at war with that clan. If you want me to attack clan 2, say 'attack 2'.",0},
+		{{"scout",NULL},"On a scouting mission, I will just take a peek into the clan you name and give you a report about its guards. Say 'sneak 2' if you want me to scout clan number 2.",0},
+		{{"info",NULL},NULL,4}
 };
 
 void lowerstrcpy(char *dst,char *src)
@@ -161,16 +161,16 @@ int analyse_text_driver(int cn,int type,char *text,int co)
 			case '!':
 			case '"':
 			case '.':       if (n) {
-						word[n]=0;
-						lowerstrcpy(wordlist[w],word);
-						if (strcasecmp(wordlist[w],ch[cn].name)) { if (w<20) w++; }
-						else name=1;
-					}
-					n=0; text++;
-					break;
+					word[n]=0;
+					lowerstrcpy(wordlist[w],word);
+					if (strcasecmp(wordlist[w],ch[cn].name)) { if (w<20) w++; }
+					else name=1;
+				}
+				n=0; text++;
+				break;
 			default: 	word[n++]=*text++;
-					if (n>250) return 0;
-					break;
+				if (n>250) return 0;
+				break;
 		}
 	}
 
@@ -183,16 +183,16 @@ int analyse_text_driver(int cn,int type,char *text,int co)
 			if (n==w && !qa[q].word[n]) {
 				if (qa[q].answer) quiet_say(cn,qa[q].answer,ch[co].name,ch[cn].name);
 				else switch(qa[q].answer_code) {
-					     case 1:	quiet_say(cn,"I'm %s.",ch[cn].name);
-					     default:	return qa[q].answer_code;
-				}
+						case 1:	quiet_say(cn,"I'm %s.",ch[cn].name);
+						default:	return qa[q].answer_code;
+					}
 				break;
 			}
 		}
 	}
 
 
-        return 42;
+	return 42;
 }
 
 
@@ -200,10 +200,10 @@ int analyse_text_driver(int cn,int type,char *text,int co)
 
 struct clanmaster_driver_data
 {
-        int last_talk;
+	int last_talk;
 	int dir;
 
-        char accept[80];
+	char accept[80];
 	int accept_clan;
 	int accept_cn;
 	char join[80];
@@ -219,8 +219,8 @@ void clanmaster_driver_parse(int cn,struct clanmaster_driver_data *dat)
 
 	for (ptr=nextnv(ch[cn].arg,name,value); ptr; ptr=nextnv(ptr,name,value)) {
 
-                if (!strcmp(name,"dir")) dat->dir=atoi(value);
-                else elog("unknown arg for %s (%d): %s",ch[cn].name,cn,name);
+		if (!strcmp(name,"dir")) dat->dir=atoi(value);
+		else elog("unknown arg for %s (%d): %s",ch[cn].name,cn,name);
 	}
 }
 
@@ -228,6 +228,7 @@ struct clan_found_data
 {
 	int state;
 	int nr;
+	int clan_nr;
 
 	char name[80];
 };
@@ -236,15 +237,15 @@ void clanmaster_driver(int cn,int ret,int lastact)
 {
 	struct clanmaster_driver_data *dat;
 	struct clan_found_data *fnd;
-        int co,in,n,rank,cc,res;
-        struct msg *msg,*next;
+	int co,in,n,rank,cc,res;
+	struct msg *msg,*next;
 	char *ptr,tmp[80];
 
-        dat=set_data(cn,DRD_CLANMASTERDRIVER,sizeof(struct clanmaster_driver_data));
+	dat=set_data(cn,DRD_CLANMASTERDRIVER,sizeof(struct clanmaster_driver_data));
 	if (!dat) return;	// oops...
 
-        if (ch[cn].arg) {
-                clanmaster_driver_parse(cn,dat);
+	if (ch[cn].arg) {
+		clanmaster_driver_parse(cn,dat);
 		ch[cn].arg=NULL;
 	}
 
@@ -255,7 +256,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 		// did we see someone?
 		if (msg->type==NT_CHAR) {
 
-                        co=msg->dat1;
+			co=msg->dat1;
 
 			// dont talk to someone we cant see, and dont talk to ourself
 			if (!char_see_char(cn,co) || cn==co) { remove_message(cn,msg); continue; }
@@ -266,16 +267,16 @@ void clanmaster_driver(int cn,int ret,int lastact)
 			// dont talk to the same person twice
 			if (mem_check_driver(cn,co,7)) { remove_message(cn,msg); continue; }
 
-			if (!get_char_club(co) && !get_char_clan(co)) quiet_say(cn,"Hello %s! Would you like to found a clan?",ch[co].name);
+			if (!get_char_club(co) && !get_char_clan(co)) quiet_say(cn,"Hello %s! Would you like to found a °c4clan°c0?",ch[co].name);
 			mem_add_driver(cn,co,7);
 		}
 
-                // talk back
+		// talk back
 		if (msg->type==NT_TEXT) {
 			analyse_text_driver(cn,msg->dat1,(char*)msg->dat2,msg->dat3);
 
-                        if ((msg->dat1==1 || msg->dat1==2) && (co=msg->dat3)!=cn) {	// talk, and not our talk
-                                if ((ptr=strcasestr((char*)msg->dat2,"name:")) && (fnd=set_data(co,DRD_CLANFOUND,sizeof(struct clan_found_data)))) {
+			if ((msg->dat1==1 || msg->dat1==2) && (co=msg->dat3)!=cn) {	// talk, and not our talk
+				if ((ptr=strcasestr((char*)msg->dat2,"name:")) && (fnd=set_data(co,DRD_CLANFOUND,sizeof(struct clan_found_data)))) {
 					if (!(ch[co].flags&CF_PAID)) {
 						quiet_say(cn,"I'm sorry, %s, but only paying players may found clans.",ch[co].name);
 					} else if (!get_char_clan(co) && !get_char_club(co)) {
@@ -287,12 +288,34 @@ void clanmaster_driver(int cn,int ret,int lastact)
 						}
 						fnd->name[n]=0;
 						fnd->state=1;
-						quiet_say(cn,"Your clan, %s, will be named '%s'. Try again if that is not what you want. Or hand me a Clan Jewel to proceed.",ch[co].name,fnd->name);
+						quiet_say(cn,"Your clan, %s, will be named '%s'. Try again if that is not what you want. If you wish to choose a clan number, use: 'number: <clan number>', or hand me a Clan Jewel to proceed.",ch[co].name,fnd->name);
+					} else quiet_say(cn,"You are already a member of a clan or club. You cannot found a new one.");
+				}
+				if ((ptr=strcasestr((char*)msg->dat2,"number:")) && (fnd=set_data(co,DRD_CLANFOUND,sizeof(struct clan_found_data)))) {
+					if (!get_char_clan(co) && !get_char_club(co)) {
+						fnd->clan_nr=atoi(ptr+7);
+						if (fnd->clan_nr<1 || fnd->clan_nr>31) {
+							quiet_say(cn,"You must use a number between 1 and 31.");
+							remove_message(cn,msg);
+						}
+						else if (check_clan(fnd->clan_nr)){
+							quiet_say(cn,"That clan number is already taken.");
+							remove_message(cn,msg);
+						}
+						else if (fnd->state==1) {
+							quiet_say(cn,"Your clan, %s, will be named '%s' and will be number %d. Try again if that is not what you want. Or hand me a Clan Jewel to proceed.",ch[co].name,fnd->name,fnd->clan_nr);
+							remove_message(cn,msg);
+						}
+						else {
+							quiet_say(cn,"You must name your clan first. Say: 'name: <clan-name>'.");
+							fnd->clan_nr = 0;
+							remove_message(cn,msg);
+						}
 					} else quiet_say(cn,"You are already a member of a clan or club. You cannot found a new one.");
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"accept:"))) {
 					if (!get_char_clan(co) || ch[co].clan_rank<2) {
-                                                quiet_say(cn,"You are not a clan leader, %s.",ch[co].name);
+						quiet_say(cn,"You are not a clan leader, %s.",ch[co].name);
 					} else {
 						ptr+=7;
 						while (isspace(*ptr)) ptr++;
@@ -310,7 +333,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"join:"))) {
 					if (get_char_clan(co) || get_char_club(co)) {
-                                                quiet_say(cn,"You are already a clan member, %s.",ch[co].name);
+						quiet_say(cn,"You are already a clan member, %s.",ch[co].name);
 					} else {
 						ptr+=5;
 						while (isspace(*ptr)) ptr++;
@@ -319,12 +342,12 @@ void clanmaster_driver(int cn,int ret,int lastact)
 							tmp[n]=*ptr++;
 						}
 						tmp[n]=0;
-                                                if (strcasecmp(dat->accept,ch[co].name)) {
+						if (strcasecmp(dat->accept,ch[co].name)) {
 							quiet_say(cn,"You have not been invited, %s.",ch[co].name);
 						} else if (strcasecmp(dat->join,tmp)) {
 							quiet_say(cn,"%s has not invited you, %s.",tmp,ch[co].name);
 						} else {
-                                                        add_member(co,dat->accept_clan,dat->join);
+							add_member(co,dat->accept_clan,dat->join);
 							quiet_say(cn,"%s, you are now a member of %s's clan.",ch[co].name,dat->join);
 							dat->accept[0]=0;
 							dat->accept_clan=0;
@@ -335,7 +358,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"leave!"))) {
 					if (!get_char_clan(co)) {
-                                                quiet_say(cn,"You are not a clan member, %s.",ch[co].name);
+						quiet_say(cn,"You are not a clan member, %s.",ch[co].name);
 					} else {
 						remove_member(co,co);
 						quiet_say(cn,"You are no longer a member of any clan, %s",ch[co].name);
@@ -343,7 +366,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"rank:"))) {
 					if (!get_char_clan(co) || ch[co].clan_rank<4) {
-                                                quiet_say(cn,"You are not a clan leader, %s.",ch[co].name);
+						quiet_say(cn,"You are not a clan leader, %s.",ch[co].name);
 					} else {
 						ptr+=6;
 						while (isspace(*ptr)) ptr++;
@@ -366,7 +389,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 						}
 						if (cc) {
 							if (!(ch[cc].flags&CF_PAID) && rank>1) {
-                                                                quiet_say(cn,"%s is not a paying player, you cannot set the rank higher than 1.",ch[cc].name);
+								quiet_say(cn,"%s is not a paying player, you cannot set the rank higher than 1.",ch[cc].name);
 							} else if (get_char_clan(cc)==get_char_clan(co)) {
 								ch[cc].clan_rank=rank;
 								add_clanlog(ch[cc].clan,clan_serial(ch[cc].clan),ch[cc].ID,30,"%s rank was set to %d by %s",ch[cc].name,rank,ch[co].name);
@@ -388,7 +411,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"fire:"))) {
 					if (!get_char_clan(co) || ch[co].clan_rank<4) {
-                                                quiet_say(cn,"You are not a clan leader, %s.",ch[co].name);
+						quiet_say(cn,"You are not a clan leader, %s.",ch[co].name);
 					} else {
 						ptr+=6;
 						while (isspace(*ptr)) ptr++;
@@ -398,7 +421,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 						}
 						tmp[n]=0;
 
-                                                for (cc=getfirst_char(); cc; cc=getnext_char(cc)) {
+						for (cc=getfirst_char(); cc; cc=getnext_char(cc)) {
 							if (!strcasecmp(tmp,ch[cc].name) && (ch[cc].flags&CF_PLAYER)) break;
 						}
 						if (cc) {
@@ -427,16 +450,16 @@ void clanmaster_driver(int cn,int ret,int lastact)
 		if (msg->type==NT_GIVE) {
 			co=msg->dat1;
 
-                        if ((in=ch[cn].citem)) {	// we still have it
+			if ((in=ch[cn].citem)) {	// we still have it
 				if (it[in].ID==IID_CLANJEWEL && (fnd=set_data(co,DRD_CLANFOUND,sizeof(struct clan_found_data)))) {
-                                        if (fnd->state==1) {
-						res=found_clan(fnd->name,co,&fnd->nr);
+					if (fnd->state==1) {
+						res=found_clan(fnd->name,co,&fnd->nr,fnd->clan_nr);
 						if (!res) {
 							quiet_say(cn,"So be it. There will be a new clan, named '%s', and you, %s, shall be its new master. Good luck, young master!",fnd->name,ch[co].name);
 							fnd->state=0;
-
+							fnd->clan_nr=0;
 							add_member(co,fnd->nr,ch[co].name);
-                                                        ch[co].clan_rank=4;
+							ch[co].clan_rank=4;
 
 							destroy_item(ch[cn].citem);
 							ch[cn].citem=0;
@@ -451,7 +474,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 				}
 				// try to give it back
 				dat->give_try++;
-                                if (dat->give_try<20 && give_driver(cn,co)) return;
+				if (dat->give_try<20 && give_driver(cn,co)) return;
 
 				// didnt work, let it vanish, then
 				destroy_item(ch[cn].citem);
@@ -459,22 +482,22 @@ void clanmaster_driver(int cn,int ret,int lastact)
 			}
 			dat->give_try=0;
 		}
-                remove_message(cn,msg);
+		remove_message(cn,msg);
 	}
 
-        // do something. whenever possible, call do_idle with as high a tick count
+	// do something. whenever possible, call do_idle with as high a tick count
 	// as reasonable when doing nothing.
 
 	if (secure_move_driver(cn,ch[cn].tmpx,ch[cn].tmpy,dat->dir,ret,lastact)) return;
 
-        if (ticker>dat->last_talk+TICKS*60 && !RANDOM(25)) {
+	if (ticker>dat->last_talk+TICKS*60 && !RANDOM(25)) {
 		switch(RANDOM(8)) {
 			case 0:		murmur(cn,"My back itches."); break;
 			case 1:		whisper(cn,"There's something stuck between your teeth."); break;
 			case 2:		murmur(cn,"Oh yeah, those were the days."); break;
 			case 3:		murmur(cn,"Now where did I put it?"); break;
 			case 4:		murmur(cn,"Oh my, life is hard but unfair."); break;
-                        case 5:		murmur(cn,"Beware of the fire snails!"); break;
+			case 5:		murmur(cn,"Beware of the fire snails!"); break;
 			case 6:         murmur(cn,"I love the clicking of coins."); break;
 			case 7:		murmur(cn,"Gold and Silver, Silver and Gold."); break;
 			default:	break;
@@ -488,7 +511,7 @@ void clanmaster_driver(int cn,int ret,int lastact)
 		dat->memcleartimer=ticker+TICKS*60*60*12;
 	}
 
-        do_idle(cn,TICKS*2);
+	do_idle(cn,TICKS*2);
 }
 
 struct clanclerk_driver_data
@@ -500,27 +523,28 @@ void clanclerk_driver(int cn,int ret,int lastact)
 {
 	struct clanclerk_driver_data *dat;
 	int co,in,res,nr,level,n,tmp1,tmp2;
-        struct msg *msg,*next;
+	struct msg *msg,*next;
 	char *ptr,name[40];
-        dat=set_data(cn,DRD_CLANCLERKDRIVER,sizeof(struct clanclerk_driver_data));
+
+	dat=set_data(cn,DRD_CLANCLERKDRIVER,sizeof(struct clanclerk_driver_data));
 	if (!dat) return;	// oops...
 
-        if (ch[cn].arg) {
+	if (ch[cn].arg) {
 		dat->clan=atoi(ch[cn].arg);
 		ch[cn].arg=NULL;
 	}
 
-        // loop through our messages
+	// loop through our messages
 	for (msg=ch[cn].msg; msg; msg=next) {
 		next=msg->next;
 
 		// did we see someone?
 		if (msg->type==NT_CHAR) {
 
-                        ; //co=msg->dat1;
+			; //co=msg->dat1;
 		}
 
-                // talk back
+		// talk back
 		if (msg->type==NT_TEXT) {
 			res=analyse_text_driver(cn,msg->dat1,(char*)msg->dat2,msg->dat3);
 
@@ -534,7 +558,7 @@ void clanclerk_driver(int cn,int ret,int lastact)
 					ptr+=7;
 
 					nr=atoi(ptr);
-                    remove_message(cn, msg);
+
 					if (nr<1) {
 						say(cn,"You must name a positive amount.");
 
@@ -542,21 +566,20 @@ void clanclerk_driver(int cn,int ret,int lastact)
 						continue;
 					}
 
-                    if (nr>(ch[co].gold/100) || nr < 1) {
+					if (ch[co].gold<nr*100) {
 						say(cn,"You do not have that much money, %s.",ch[co].name);
 						remove_message(cn,msg);
 						continue;
-					} else {
-					    ch[co].gold-=nr*100;
-                        ch[co].flags|=CF_ITEMS;
-                        clan_money_change(dat->clan,nr,co);
-                        say(cn,"You have deposited %dG.",nr);
-                        dlog(co,0,"deposited %dG to clan %d.",nr,dat->clan);
 					}
+					ch[co].gold-=nr*100;
+					ch[co].flags|=CF_ITEMS;
+					clan_money_change(dat->clan,nr,co);
+					say(cn,"You have deposited %dG.",nr);
+					dlog(co,0,"deposited %dG to clan %d.",nr,dat->clan);
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"add potions"))) {
 
-                                        res=add_simple_potion(dat->clan,co);
+					res=add_simple_potion(dat->clan,co);
 					say(cn,"Added %d potions.",res);
 				}
 				// members only
@@ -599,7 +622,7 @@ void clanclerk_driver(int cn,int ret,int lastact)
 					remove_message(cn,msg);
 					continue;
 
-                                        ptr+=3;
+					ptr+=3;
 					nr=atoi(ptr);
 
 					while (isspace(*ptr)) ptr++;
@@ -628,19 +651,19 @@ void clanclerk_driver(int cn,int ret,int lastact)
 						continue;
 					}
 
-                                        //res=set_clan_dungeon_buy(dat->clan,nr,level,co);
-                                        if (!res) {
+					//res=set_clan_dungeon_buy(dat->clan,nr,level,co);
+					if (!res) {
 						say(cn,"Done.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						say(cn,"Failed.");
 					}
 				}
-                                if ((ptr=strcasestr((char*)msg->dat2,"use"))) {
+				if ((ptr=strcasestr((char*)msg->dat2,"use"))) {
 
-                                        ptr+=3;
+					ptr+=3;
 					nr=atoi(ptr);
 
 					while (isspace(*ptr)) ptr++;
@@ -663,11 +686,11 @@ void clanclerk_driver(int cn,int ret,int lastact)
 						continue;
 					}
 
-                                        res=set_clan_dungeon_use(dat->clan,nr,level,co);
-                                        if (!res) {
+					res=set_clan_dungeon_use(dat->clan,nr,level,co);
+					if (!res) {
 						say(cn,"Done.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						if (res==-1) {
@@ -683,9 +706,9 @@ void clanclerk_driver(int cn,int ret,int lastact)
 					remove_message(cn,msg);
 					continue;
 				}
-                                if ((ptr=strcasestr((char*)msg->dat2,"set bonus"))) {
+				if ((ptr=strcasestr((char*)msg->dat2,"set bonus"))) {
 
-                                        ptr+=9;
+					ptr+=9;
 					nr=atoi(ptr);
 
 					while (isspace(*ptr)) ptr++;
@@ -708,11 +731,11 @@ void clanclerk_driver(int cn,int ret,int lastact)
 						continue;
 					}
 
-                                        res=set_clan_bonus(dat->clan,nr,level,co);
-                                        if (!res) {
+					res=set_clan_bonus(dat->clan,nr,level,co);
+					if (!res) {
 						say(cn,"Set bonus %d to %d.",nr,level);
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else  {
 						say(cn,"Failed to set bonus %d.",nr);
@@ -721,9 +744,9 @@ void clanclerk_driver(int cn,int ret,int lastact)
 						continue;
 					}
 				}
-                                if ((ptr=strcasestr((char*)msg->dat2,"relation"))) {
+				if ((ptr=strcasestr((char*)msg->dat2,"relation"))) {
 
-                                        ptr+=8;
+					ptr+=8;
 					nr=atoi(ptr);
 
 					while (isspace(*ptr)) ptr++;
@@ -747,7 +770,7 @@ void clanclerk_driver(int cn,int ret,int lastact)
 					}
 
 					if (level>CS_NEUTRAL && !get_clan_raid(dat->clan)) {
-						say(cn,"Your clan cannot go to war or feud unless you turn raiding on.");
+						say(cn,"Your clan cannot go to war or feud unless you turn °c4raiding on°c0.");
 
 						remove_message(cn,msg);
 						continue;
@@ -760,11 +783,11 @@ void clanclerk_driver(int cn,int ret,int lastact)
 						continue;
 					}
 
-                                        res=set_clan_relation(dat->clan,nr,level,co);
-                                        if (!res) {
+					res=set_clan_relation(dat->clan,nr,level,co);
+					if (!res) {
 						say(cn,"Changed relation.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else  {
 						say(cn,"Failed to change relation.");
@@ -787,7 +810,7 @@ void clanclerk_driver(int cn,int ret,int lastact)
 					while (isdigit(*ptr)) ptr++;
 					while (isspace(*ptr)) ptr++;
 
-                                        for (n=0; n<39; n++) {
+					for (n=0; n<39; n++) {
 						if (!*ptr || *ptr=='"') break;
 						name[n]=*ptr++;
 					}
@@ -798,22 +821,22 @@ void clanclerk_driver(int cn,int ret,int lastact)
 					if (!res) {
 						say(cn,"Changed rank name.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						say(cn,"Failed to change rank name.");
 					}
 				}
-                                if ((ptr=strcasestr((char*)msg->dat2,"website"))) {
+				if ((ptr=strcasestr((char*)msg->dat2,"website"))) {
 
-                                        ptr+=7;
-                                        while (isspace(*ptr)) ptr++;
+					ptr+=7;
+					while (isspace(*ptr)) ptr++;
 
-                                        res=set_clan_website(dat->clan,ptr,co);
-                                        if (!res) {
+					res=set_clan_website(dat->clan,ptr,co);
+					if (!res) {
 						say(cn,"Done.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						say(cn,"Failed.");
@@ -821,14 +844,14 @@ void clanclerk_driver(int cn,int ret,int lastact)
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"message"))) {
 
-                                        ptr+=7;
-                                        while (isspace(*ptr)) ptr++;
+					ptr+=7;
+					while (isspace(*ptr)) ptr++;
 
-                                        res=set_clan_message(dat->clan,ptr,co);
-                                        if (!res) {
+					res=set_clan_message(dat->clan,ptr,co);
+					if (!res) {
 						say(cn,"Done.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						say(cn,"Failed.");
@@ -836,11 +859,11 @@ void clanclerk_driver(int cn,int ret,int lastact)
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"raiding on"))) {
 
-                                        res=set_clan_raid(dat->clan,co,1);
-                                        if (!res) {
+					res=set_clan_raid(dat->clan,co,1);
+					if (!res) {
 						say(cn,"Done.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						say(cn,"Failed.");
@@ -848,11 +871,11 @@ void clanclerk_driver(int cn,int ret,int lastact)
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"raiding off"))) {
 
-                                        res=set_clan_raid(dat->clan,co,0);
-                                        if (!res) {
+					res=set_clan_raid(dat->clan,co,0);
+					if (!res) {
 						say(cn,"Done.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						say(cn,"Failed.");
@@ -861,11 +884,11 @@ void clanclerk_driver(int cn,int ret,int lastact)
 
 				if ((ptr=strcasestr((char*)msg->dat2,"raiding god on")) && (ch[co].flags&CF_GOD)) {
 
-                                        res=set_clan_raid_god(dat->clan,co,1);
-                                        if (!res) {
+					res=set_clan_raid_god(dat->clan,co,1);
+					if (!res) {
 						say(cn,"Done.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						say(cn,"Failed.");
@@ -873,11 +896,11 @@ void clanclerk_driver(int cn,int ret,int lastact)
 				}
 				if ((ptr=strcasestr((char*)msg->dat2,"raiding god off")) && (ch[co].flags&CF_GOD)) {
 
-                                        res=set_clan_raid_god(dat->clan,co,0);
-                                        if (!res) {
+					res=set_clan_raid_god(dat->clan,co,0);
+					if (!res) {
 						say(cn,"Done.");
 
-                                                remove_message(cn,msg);
+						remove_message(cn,msg);
 						continue;
 					} else {
 						say(cn,"Failed.");
@@ -885,36 +908,35 @@ void clanclerk_driver(int cn,int ret,int lastact)
 				}
 			}
 		}
-
 		// got an item?
 		if (msg->type==NT_GIVE) {
 			co=msg->dat1;
 
-                        if ((in=ch[cn].citem)) {	// we still have it
-							if (it[in].ID==IID_CLANJEWEL) {
-								res=add_jewel(dat->clan, cn);
+			if ((in=ch[cn].citem)) {	// we still have it
+				if (it[in].ID==IID_CLANJEWEL) {
+					res=add_jewel(dat->clan, cn);
 
-								if (!res) {
-									say(cn,"Added one jewel to our clan storage.");
+					if (!res) {
+						say(cn,"Added one jewel to our clan storage.");
 
-									destroy_item(ch[cn].citem);
-									ch[cn].citem=0;
-									remove_message(cn,msg);
-									continue;
-								} else {
-									say(cn,"Failed to add jewel to storage, please try again.");
-								}
-							}
-							// try to give it back
-							if (!give_char_item(co,in)) destroy_item(ch[cn].citem);
-							ch[cn].citem=0;
+						destroy_item(ch[cn].citem);
+						ch[cn].citem=0;
+						remove_message(cn,msg);
+						continue;
+					} else {
+						say(cn,"Failed to add jewel to storage, please try again.");
+					}
+				}
+				// try to give it back
+				if (!give_char_item(co,in)) destroy_item(ch[cn].citem);
+				ch[cn].citem=0;
 				if (it[in].driver==IDR_FLASK) {
 					res=add_alc_potion(dat->clan,in);
 
 					if (!res) {
 						say(cn,"Added one potion to our storage.");
 
-                                                destroy_item(ch[cn].citem);
+						destroy_item(ch[cn].citem);
 						ch[cn].citem=0;
 						remove_message(cn,msg);
 						continue;
@@ -923,23 +945,23 @@ void clanclerk_driver(int cn,int ret,int lastact)
 					}
 				}
 
-                                // try to give it back
-                                if (give_driver(cn,co)) return;
+				// try to give it back
+				if (give_driver(cn,co)) return;
 
 				// didnt work, let it vanish, then
 				destroy_item(ch[cn].citem);
 				ch[cn].citem=0;
 			}
 		}
-                remove_message(cn,msg);
+		remove_message(cn,msg);
 	}
 
-        // do something. whenever possible, call do_idle with as high a tick count
+	// do something. whenever possible, call do_idle with as high a tick count
 	// as reasonable when doing nothing.
 
-        if (secure_move_driver(cn,ch[cn].tmpx,ch[cn].tmpy,DX_RIGHTDOWN,ret,lastact)) return;
+	if (secure_move_driver(cn,ch[cn].tmpx,ch[cn].tmpy,DX_RIGHTDOWN,ret,lastact)) return;
 
-        do_idle(cn,TICKS*2);
+	do_idle(cn,TICKS*2);
 }
 
 void clanmaster_dead(int cn,int co)

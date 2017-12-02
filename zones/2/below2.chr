@@ -54,7 +54,7 @@ WN_HEAD=helmet1q1
 WN_ARMS=sleeves1q1
 WN_LEGS=leggings1q1
 
-rprob=400
+rprob=4000
 ritem=zombie_skull1
 
 gold_prob=25
@@ -128,7 +128,7 @@ WN_HEAD=helmet1q1
 WN_ARMS=sleeves1q1
 WN_LEGS=leggings1q1
 
-rprob=400
+rprob=4000
 ritem=zombie_skull1
 
 gold_prob=25
@@ -202,7 +202,7 @@ WN_HEAD=helmet1q1
 WN_ARMS=sleeves1q1
 WN_LEGS=leggings1q1
 
-rprob=400
+rprob=4000
 ritem=zombie_skull1
 
 gold_prob=25
@@ -276,7 +276,7 @@ WN_HEAD=helmet1q1
 WN_ARMS=sleeves1q1
 WN_LEGS=leggings1q1
 
-rprob=400
+rprob=4000
 ritem=zombie_skull1
 
 gold_prob=25
@@ -352,7 +352,7 @@ WN_LEGS=leggings1q1
 
 item=zombie_key1
 
-rprob=400
+rprob=4000
 ritem=zombie_skull1
 
 gold_prob=25
@@ -723,7 +723,7 @@ WN_HEAD=helmet2q1
 WN_ARMS=sleeves2q1
 WN_LEGS=leggings2q1
 
-rprob=400
+rprob=4000
 ritem=zombie_skull1
 
 gold_prob=25

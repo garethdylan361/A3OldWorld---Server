@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="198.8.61.107">
+    <serverData>
+      <paths name="198.8.61.107">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/gsmall/server" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

@@ -200,12 +200,12 @@ void tunneldoor(int in,int cn)
         if (it[in].drdata[0]==2 || it[in].drdata[0]==3) {
 		
 		if (teleport_char_driver(cn,250,250)) {
-			if (ppd->used[ppd->clevel]<20) {
+			if (ppd->used[ppd->clevel]<5) {
 
 				ppd->used[ppd->clevel]++;
 
 				if (it[in].drdata[0]==2) {
-					value=level_value(ppd->clevel)/10.0/ppd->used[ppd->clevel];
+					value=level_value(ppd->clevel)/5.0/ppd->used[ppd->clevel];
 					//xlog("value=%f (level=%d)",value,ppd->clevel);
 					log_char(cn,LOG_SYSTEM,0,"You have been given experience.");
 					give_exp(cn,value);
@@ -343,6 +343,7 @@ void mean_door(int in,int cn)
 		set_sector(it[in].x,it[in].y);
 		//xlog("clear");
 	}
+
 }
 
 

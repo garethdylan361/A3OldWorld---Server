@@ -28,7 +28,7 @@ struct clan_depot
 {
 	int money;
 };
-		
+
 struct clan_treasure
 {
 	int jewels;
@@ -38,22 +38,22 @@ struct clan_treasure
 };
 
 #define CS_ALLIANCE	1	// needs 24h for one-sided change to treaty
-				// members of clans with an alliance cannot attack each other
+// members of clans with an alliance cannot attack each other
 #define CS_PEACETREATY	2	// needs 24h for one-sided change to neutral
-				// members of clans with a peace-treaty cannot attack each other
+// members of clans with a peace-treaty cannot attack each other
 #define CS_NEUTRAL	3	// members of neutral clans cannot attack each other. needs 1h for one-sided change to war
 
 #define CS_WAR		4       // members of clans at war can attack each other in clan areas.
-				// killed enemies will not lose EXP, but they will lose their items
+// killed enemies will not lose EXP, but they will lose their items
 
 #define CS_FEUD		5	// members of clans with a feud can attack each other everywhere.
-				// 24 hours for one-sided change to war
-				// killed enemies will not lose EXP and items.
+// 24 hours for one-sided change to war
+// killed enemies will not lose EXP and items.
 
 struct clan_status
 {
 	int members;					// number of members	(aprox)
-	int serial;  		 			
+	int serial;
 	unsigned char current_relation[MAXCLAN];	// relation to clan X
 	unsigned char want_relation[MAXCLAN];
 	int want_date[MAXCLAN];
@@ -93,16 +93,17 @@ struct clan
 	struct clan_depot depot;
 	struct clan_treasure treasure;
 	struct clan_status status;
-        char website[80];
+	char website[80];
 	char message[80];
-        struct clan_dungeon dungeon;
+	struct clan_dungeon dungeon;
 };
 
 void showclan(int cn);
 int show_clan_info(int cn,int co,char *buf);
 void show_clan_relation(int cn,int cnr);
 void tick_clan(void);
-int found_clan(char *name,int cn,int *pclan);
+int found_clan(char *name,int cn,int *pclan,int clan_nr);
+int check_clan(int clan_nr);
 int add_jewel(int nr,int cn);
 int cnt_jewels(int nr);
 int set_clan_bonus(int cnr,int gnr,int glevel,int cn);
@@ -140,4 +141,3 @@ void clan_setname(int cnr,char *name);
 int score_to_level(int score);
 int clan_get_training_score(int cnr);
 void show_clan_message(int cn);
-
