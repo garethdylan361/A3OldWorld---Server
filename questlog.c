@@ -264,7 +264,7 @@ int questlog_done(int cn,int qnr)
 	else val=min(level_value(ch[cn].level),val);
 
 	give_exp(cn,val);
-	if(questlog[qnr].gold > 0 && cnt == 1) {
+	if(questlog[qnr].gold > 0 && cnt == 0) {
 		give_money(cn, questlog[qnr].gold * 100, "completed quest.");
 	}
         if (questlog[qnr].exp>0) dlog(cn,0,"Received %d exp for doing quest %s for the %d. time (nominal value %d exp)",val,questlog[qnr].name,(cnt+1),questlog[qnr].exp);

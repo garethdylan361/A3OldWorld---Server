@@ -396,7 +396,7 @@ void offer_missions(int cn,int co,struct military_ppd *ppd)
 	int n;
 
 	for (n=0; n<5; n++) {
-		if (ppd->mis[n].pts>1 && ppd->mis[n].pts>ppd->current_pts) continue;
+		//if (ppd->mis[n].pts>1 && ppd->mis[n].pts>ppd->current_pts) continue;
 
 		switch(ppd->mis[n].type) {
 			case 1:		say(cn,"I have an °c4%s°c0 mission for you, %s. It is to slay %d level %d demons in the Pentagram Quest.",
@@ -577,7 +577,9 @@ void military_master_driver(int cn,int ret,int lastact)
 					say(cn,"But you don't even belong to the army, %s. Talk to Seymour about enrollment.",ch[co].name);
 				} else {
 					level = atoi(temp);
-					if (level == 0 || level < 8 || level % 2 != 0 || level > 118) {
+					if (level < (ch[co].level-10)){
+						say(cn, "This level is too low for you.");
+					} else if (level == 0 || level < 8 || level % 2 != 0 || level > 118) {
 						say(cn, "Hmm? I don't understand. Please pick an even level between 8 and 118.");
 					} else {
 						generate_mission_lvl(co, ppd, level);
@@ -615,10 +617,6 @@ void military_master_driver(int cn,int ret,int lastact)
 						say(cn,"You already have a mission, %s. Would you like to °c4hear°c0 it again?",ch[co].name);
 						break;
 					}
-					if (ppd->current_pts<ppd->mis[1].pts) {
-						say(cn,"I have not offered you that kind of mission, %s.",ch[co].name);
-						break;
-					}
 					if (ppd->mission_yday!=yday+1) {
 						say(cn,"I haven't offered you that kind of mission today, %s.",ch[co].name);
 						break;
@@ -631,10 +629,6 @@ void military_master_driver(int cn,int ret,int lastact)
 					break;
 				case 13:	if (ppd->took_mission) {
 						say(cn,"You already have a mission, %s. Would you like to °c4hear°c0 it again?",ch[co].name);
-						break;
-					}
-					if (ppd->current_pts<ppd->mis[2].pts) {
-						say(cn,"I have not offered you that kind of mission, %s.",ch[co].name);
 						break;
 					}
 					if (ppd->mission_yday!=yday+1) {
@@ -651,10 +645,6 @@ void military_master_driver(int cn,int ret,int lastact)
 						say(cn,"You already have a mission, %s. Would you like to °c4hear°c0 it again?",ch[co].name);
 						break;
 					}
-					if (ppd->current_pts<ppd->mis[3].pts) {
-						say(cn,"I have not offered you that kind of mission, %s.",ch[co].name);
-						break;
-					}
 					if (ppd->mission_yday!=yday+1) {
 						say(cn,"I haven't offered you that kind of mission today, %s.",ch[co].name);
 						break;
@@ -667,10 +657,6 @@ void military_master_driver(int cn,int ret,int lastact)
 					break;
 				case 15:	if (ppd->took_mission) {
 						say(cn,"You already have a mission, %s. Would you like to °c4hear°c0 it again?",ch[co].name);
-						break;
-					}
-					if (ppd->current_pts<ppd->mis[4].pts) {
-						say(cn,"I have not offered you that kind of mission, %s.",ch[co].name);
 						break;
 					}
 					if (ppd->mission_yday!=yday+1) {

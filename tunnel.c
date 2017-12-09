@@ -206,15 +206,13 @@ void tunneldoor(int in,int cn)
 
 				if (it[in].drdata[0]==2) {
 					value=level_value(ppd->clevel)/5.0/ppd->used[ppd->clevel];
-					//xlog("value=%f (level=%d)",value,ppd->clevel);
 					log_char(cn,LOG_SYSTEM,0,"You have been given experience.");
 					give_exp(cn,value);
 					dlog(cn,0,"got %d exp for solving long tunnel section %d (%d)",value,ppd->clevel,ppd->used[ppd->clevel]);
 				}
 
 				if (it[in].drdata[0]==3) {
-					value=50/ppd->used[ppd->clevel];
-					//xlog("value=%f (level=%d)",value,ppd->clevel);
+					value=75/ppd->used[ppd->clevel];
 					log_char(cn,LOG_SYSTEM,0,"You have been given military rank.");
 					give_military_pts_no_npc(cn,value,1);					
 					dlog(cn,0,"got %d military rank for solving long tunnel section %d (%d)",value,ppd->clevel,ppd->used[ppd->clevel]);
