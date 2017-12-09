@@ -225,7 +225,7 @@ struct item
 	struct item *next;
 };
 
-extern struct item *kilit;
+extern struct item *it;
 
 // *********** CHARACTER DEFINITION ****************
 
