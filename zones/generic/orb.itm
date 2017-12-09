@@ -10,7 +10,7 @@ driver=83
 
 hitpoint_orb5:
 name="Orb of 5 Hitpoints"
-description="A glowing orb, used to enhance items."I
+description="A glowing orb, used to enhance items."
 sprite=51086
 flag=IF_TAKE
 flag=IF_USE
