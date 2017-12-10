@@ -972,7 +972,7 @@ static void cmd_help(int cn)
 	log_char(cn,LOG_SYSTEM,0,"/notells - do not receive any tells (toggle)");
 	log_char(cn,LOG_SYSTEM,0,"/noexp - do not receive any exp (toggle)");
 	log_char(cn,LOG_SYSTEM,0,"/nohints - do not receive any hints (toggle)");
-	//log_char(cn,LOG_SYSTEM,0,"/spawn - show spawn times");
+	log_char(cn,LOG_SYSTEM,0,"/spawn - show spawn times");
 	log_char(cn,LOG_SYSTEM,0,"/emote <text> - express yourself (also /me, /wave, /bow, /eg)");
 	log_char(cn,LOG_SYSTEM,0,"/thief - switch thief mode on/off (thief only)");
 	log_char(cn,LOG_SYSTEM,0,"/steal - thief only, steal an item from the character you're facing");
@@ -2218,13 +2218,71 @@ int command(int cn,char *ptr)	// 1=ok, 0=repeat
                 return 1;
 	}
 
-	/*if ((len=cmdcmp(ptr,"spawn",3))) {
-		int diff;
-		diff=max(0,((*(int*)(it['clan_spawner_5'].drdata+4)-realtime))/60);
-		log_char(cn,LOG_SYSTEM,0,"-- Spawn Times --");
-		log_char(cn,LOG_SYSTEM,0,"5: %i.", diff);
+	if ((len=cmdcmp(ptr,"spawn",3))) {
+		int diff1,diff2,diff3,diff4,diff5,diff6,diff7,diff8,
+		diff9,diff10,diff11,diff12,diff13,diff14,diff15,diff16,
+		diff17,diff18,diff19,diff20,diff21,diff22,diff23,diff24,diff25,
+		diff26,diff27,diff28,diff29;
+		diff1=max(0,((clan_spawn_time[5].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"5: %02d:%02d to go.", diff1/60,diff1%60);
+		diff2=max(0,((clan_spawn_time[15].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"15: %02d:%02d to go.", diff2/60,diff2%60);
+		diff3=max(0,((clan_spawn_time[18].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"18: %02d:%02d to go.", diff3/60,diff3%60);
+		diff29=max(0,((clan_spawn_time[20].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"20: %02d:%02d to go.", diff29/60,diff29%60);
+		diff4=max(0,((clan_spawn_time[24].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"24: %02d:%02d to go.", diff4/60,diff4%60);
+		diff5=max(0,((clan_spawn_time[28].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"28: %02d:%02d to go.", diff5/60,diff5%60);
+		diff6=max(0,((clan_spawn_time[30].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"30: %02d:%02d to go.", diff6/60,diff6%60);
+		diff7=max(0,((clan_spawn_time[34].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"34: %02d:%02d to go.", diff7/60,diff7%60);
+		diff8=max(0,((clan_spawn_time[36].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"36: %02d:%02d to go.", diff8/60,diff8%60);
+		diff9=max(0,((clan_spawn_time[38].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"38: %02d:%02d to go.", diff9/60,diff9%60);
+		diff10=max(0,((clan_spawn_time[40].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"40: %02d:%02d to go.", diff10/60,diff10%60);
+		diff11=max(0,((clan_spawn_time[42].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"42: %02d:%02d to go.", diff11/60,diff11%60);
+		diff12=max(0,((clan_spawn_time[43].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"43: %02d:%02d to go.", diff12/60,diff12%60);
+		diff13=max(0,((clan_spawn_time[44].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"44: %02d:%02d to go.", diff13/60,diff13%60);
+		diff14=max(0,((clan_spawn_time[45].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"45: %02d:%02d to go.", diff14/60,diff14%60);
+		diff15=max(0,((clan_spawn_time[56].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"46: %02d:%02d to go.", diff15/60,diff15%60);
+		diff16=max(0,((clan_spawn_time[48].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"48: %02d:%02d to go.", diff16/60,diff16%60);
+		diff17=max(0,((clan_spawn_time[50].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"50: %02d:%02d to go.", diff17/60,diff17%60);
+		diff18=max(0,((clan_spawn_time[52].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"52: %02d:%02d to go.", diff18/60,diff18%60);
+		diff19=max(0,((clan_spawn_time[60].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"60: %02d:%02d to go.", diff19/60,diff19%60);
+		diff20=max(0,((clan_spawn_time[64].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"64: %02d:%02d to go.", diff20/60,diff20%60);
+		diff21=max(0,((clan_spawn_time[68].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"68: %02d:%02d to go.", diff21/60,diff21%60);
+		diff22=max(0,((clan_spawn_time[76].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"76: %02d:%02d to go.", diff22/60,diff22%60);
+		diff23=max(0,((clan_spawn_time[84].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"84: %02d:%02d to go.", diff23/60,diff23%60);
+		diff24=max(0,((clan_spawn_time[92].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"92: %02d:%02d to go.", diff24/60,diff24%60);
+		diff25=max(0,((clan_spawn_time[100].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"100: %02d:%02d to go.", diff25/60,diff25%60);
+		diff26=max(0,((clan_spawn_time[108].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"108: %02d:%02d to go.", diff26/60,diff26%60);
+		diff27=max(0,((clan_spawn_time[160].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"160: %02d:%02d to go.", diff27/60,diff27%60);
+		diff28=max(0,((clan_spawn_time[200].time-realtime))/60);
+		log_char(cn,LOG_SYSTEM,0,"200: %02d:%02d to go.", diff28/60,diff28%60);
 		return 1;
-	}*/
+	}
 
         if ((len=cmdcmp(ptr,"complain",4))) {
                 ptr+=len; while (isspace(*ptr)) ptr++;

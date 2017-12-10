@@ -98,6 +98,12 @@ struct clan
 	struct clan_dungeon dungeon;
 };
 
+struct clan_spawn_time {
+	int level;
+	int time;
+};
+extern struct clan_spawn_time clan_spawn_time[201];
+
 void showclan(int cn);
 int show_clan_info(int cn,int co,char *buf);
 void show_clan_relation(int cn,int cnr);

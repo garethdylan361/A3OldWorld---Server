@@ -1007,18 +1007,22 @@ void clanspawn_driver(int in,int cn)
 		call_item(IDR_CLANSPAWN,in,0,ticker+TICKS*60);
 
 		// preset: after an average of 1/2 freq after reboot
-		if (!*(unsigned int*)(it[in].drdata+4)) {
-			*(unsigned int*)(it[in].drdata+4)=((realtime+RANDOM(60*60*freq/2)+60*60*freq/4)/1800)*1800;
-			//*(unsigned int*)(it[in].drdata+4)=realtime+30;
+		if (!clan_spawn_time[it[in].drdata[0]].level) {
+			int time = ((realtime+RANDOM(60*60*freq/2)+60*60*freq/4)/1800)*1800;
+			clan_spawn_time[it[in].drdata[0]].level = it[in].drdata[0];
+			clan_spawn_time[it[in].drdata[0]].time = time;
+			db_create_clan_spawn(it[in].drdata[0]);
 			it[in].max_level=it[in].drdata[0];
 		}
 
-		if (realtime>=*(unsigned int*)(it[in].drdata+4)) {
+		if (realtime>=clan_spawn_time[it[in].drdata[0]].time) {
 			if (!it[in].drdata[2]) { it[in].sprite++; set_sector(it[in].x,it[in].y); }
 			it[in].drdata[2]++;
 
 			// a new one at every freq hours on average
-			*(unsigned int*)(it[in].drdata+4)=((realtime+RANDOM(60*60*freq)+60*60*freq/2)/1800)*1800;
+			int time = ((realtime+RANDOM(60*60*freq)+60*60*freq/2)/1800)*1800;
+			clan_spawn_time[it[in].drdata[0]].time = time;
+			db_update_clan_spawn(it[in].drdata[0]);
 		}
 		return;
 	}
@@ -1041,7 +1045,7 @@ void clanspawn_driver(int in,int cn)
 	}
 
 	if (!it[in].drdata[2]) {
-		diff=max(0,((*(int*)(it[in].drdata+4)-realtime))/60);
+		diff=max(0,((clan_spawn_time[it[in].drdata[0]].time-realtime))/60);
 		log_char(cn,LOG_SYSTEM,0,"%02d:%02d to go, about one jewel every %d hours.",diff/60,diff%60,freq);
 		return;
 	}

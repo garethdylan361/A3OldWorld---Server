@@ -67,8 +67,8 @@ sleep 1
 sleep 1
 ./server -a 31 -d
 sleep 1
-#./server -a 32 -d
-#sleep 1
+./server -a 32 -d
+sleep 1
 ./server -a 33 -d
 sleep 1
 ./server -a 34 -d

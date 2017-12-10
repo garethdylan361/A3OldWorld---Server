@@ -324,6 +324,8 @@ void mysql_set_free_proc(void (*new_free_proc)(void*));
 void mysql_set_realloc_proc(void* (*new_realloc_proc)(void *,size_t));*/
 
 
+
+
 // start connection to database and initialise database if needed
 int init_database(void)
 {
@@ -372,6 +374,7 @@ int init_database(void)
 	// we need an up to date arealist before starting
 	update_arealist();
 	db_read_clubs();
+	db_read_clan_spawn();
 
         if (multi) return start_db_thread();
 	else return 1;
@@ -3531,6 +3534,7 @@ void db_unlockname(char *name,char *master)
 //--------- clubs -----------
 
 struct club club[MAXCLUB];
+struct clan_spawn_time clan_spawn_time[];
 
 //create table clubs ( ID int primary key, name char(80) not null, paid int not null, money int not null, serial int not null );
 
@@ -3596,6 +3600,52 @@ void db_update_club(int cnr)
 
 	sprintf(buf,"update clubs set name='%s', paid=%d, money=%d, serial=%d where ID=%d",club[cnr].name,club[cnr].paid,club[cnr].money,club[cnr].serial,cnr);
 	add_query(DT_QUERY,buf,"update club",0);
+}
+int db_create_clan_spawn(int level)
+{
+	char buf[256];
+
+	sprintf(buf,"insert into clan_spawn (level, time) values (%d,%d)",clan_spawn_time[level].level, clan_spawn_time[level].time);
+	add_query(DT_QUERY,buf,"create clan_spawn",0);
+
+	return 0;
+}
+void db_read_clan_spawn(void)
+{
+	int level,time;
+	MYSQL_RES *result;
+	MYSQL_ROW row;
+
+	if (mysql_query_con(&mysql,"select * from clan_spawn")) {
+		elog("read_clan_spawn: Could not read clan_spawn table: Error: %s (%d)",mysql_error(&mysql),mysql_errno(&mysql));
+		return;
+	}
+
+	if (!(result=mysql_store_result_cnt(&mysql))) {
+		elog("read_clan_spawn: Failed to store result: Error: %s (%d)",mysql_error(&mysql),mysql_errno(&mysql));
+		return;
+	}
+
+	while ((row=mysql_fetch_row(result))) {
+		if (!row[1] || !row[2]) {
+			elog("read_clan_spawn: Incomplete row: Error: %s (%d)",mysql_error(&mysql),mysql_errno(&mysql));
+			continue;
+		}
+
+		level=atoi(row[0]);
+		time=atoi(row[1]);
+		clan_spawn_time[level].level=level;
+		clan_spawn_time[level].time=time;
+	}
+
+	mysql_free_result_cnt(result);
+}
+void db_update_clan_spawn(int level)
+{
+	char buf[256];
+
+	sprintf(buf,"update clan_spawn set time=%d where level=%d",clan_spawn_time[level].time,level);
+	add_query(DT_QUERY,buf,"update clan_spawn",0);
 }
 
 void schedule_clubs(void)
